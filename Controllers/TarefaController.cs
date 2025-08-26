@@ -36,9 +36,7 @@ namespace TrilhaApiDesafio.Controllers
         [HttpGet("ObterPorTitulo")]
         public IActionResult ObterPorTitulo(string titulo)
         {
-            var tarefas = _context.Tarefas
-                                  .Where(x => x.Titulo.Contains(titulo))
-                                  .ToList();
+            var tarefas = _context.Tarefas.Where(x => x.Titulo.Contains(titulo)).ToList();
 
             if (!tarefas.Any())
                 return NotFound();
@@ -49,22 +47,18 @@ namespace TrilhaApiDesafio.Controllers
         [HttpGet("ObterPorData")]
         public IActionResult ObterPorData(DateTime data)
         {
-            var tarefas = _context.Tarefas
-                                  .Where(x => x.Data.Date == data.Date)
-                                  .ToList();
+            var tarefas = _context.Tarefas.Where(x => x.Data.Date == data.Date).ToList();
 
             if (!tarefas.Any())
                 return NotFound();
-
+            
             return Ok(tarefas);
         }
 
         [HttpGet("ObterPorStatus")]
         public IActionResult ObterPorStatus(EnumStatusTarefa status)
         {
-            var tarefas = _context.Tarefas
-                                  .Where(x => x.Status == status)
-                                  .ToList();
+            var tarefas = _context.Tarefas.Where(x => x.Status == status).ToList();
 
             if (!tarefas.Any())
                 return NotFound();
